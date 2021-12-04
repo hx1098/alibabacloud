@@ -10,6 +10,9 @@ spring:
       config: #开启配置中心, 进行拉取配置
         server-addr: localhost:8848
         file-extension: yaml #配置中兴指定yml配置
+        group: DEV_GROUP #增加分组
+        namespace: a013011c-766d-40cb-bcd0-43ba73560b72
+
 
 
 ##消费者将要去访问的服务名称(向nacos注册成功的微服务提供者)
