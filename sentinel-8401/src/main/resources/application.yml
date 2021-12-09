@@ -7,7 +7,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:9001
+        server-addr: localhost:8848
     sentinel:
       transport:
         # 配置Sentinel dashboard地址
