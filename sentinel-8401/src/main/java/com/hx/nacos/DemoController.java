@@ -1,6 +1,7 @@
 package com.hx.nacos;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import java.util.concurrent.TimeUnit;
  * @editTime 2021/11/29 14:04
  * @editDescription
  */
+@Slf4j
 @RestController
 public class DemoController {
 
@@ -55,6 +57,12 @@ public class DemoController {
         return "===testB====";
     }*/
 
+
+    @GetMapping("/testC")
+    public String testC() {
+        log.info("currentThread is  testC::[{}]", Thread.currentThread().getName());
+        return testService.common();
+    }
 
 
 
