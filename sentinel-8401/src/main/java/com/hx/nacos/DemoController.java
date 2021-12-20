@@ -59,8 +59,26 @@ public class DemoController {
 
 
     @GetMapping("/testC")
-    public String testC() {
+    public String testC() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(5);
         log.info("currentThread is  testC::[{}]", Thread.currentThread().getName());
+        return "testC------";
+    }
+
+    @GetMapping("/testD")
+    public String testD(Integer id) {
+        if (id != null && id > 1) {
+            throw new RuntimeException("异常比例测试!");
+        }
+        log.info("currentThread is  testC::[{}]", Thread.currentThread().getName());
+        return testService.common();
+    }
+
+    @GetMapping("/testE")
+    public String testE(Integer id) {
+        if (id != null && id > 1) {
+            throw new RuntimeException("异常数量测试!");
+        }
         return testService.common();
     }
 
