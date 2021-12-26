@@ -2,6 +2,7 @@ package com.hx.nacos;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.hx.nacos.myHandler.CustomerBlockHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -93,7 +94,7 @@ public class DemoController {
                               @RequestParam(value = "hot3",required = false)String hot3) {
         //System.out.println(hot1);
         if ("wangLiHong".equalsIgnoreCase(hot1)) {
-            throw new RuntimeException("某某某明星又上头条了， 这瓜包熟哇!!!");
+            throw new RuntimeException("这次接口是真的报错了!!， 这瓜包熟哇!!!");
         }
         /*int cc = 1 / 0;*/
         return "testHotKey";
@@ -113,6 +114,16 @@ public class DemoController {
      */
     public String testHotKeyThrowError(String hot1,String hot2, String hot3,Throwable e) {
         return "这次接口是真的报错了!!!";
+    }
+
+
+
+    @GetMapping("/customer")
+    @SentinelResource(value = "customer",
+            blockHandlerClass = CustomerBlockHandler.class,
+            blockHandler = "handlerException")
+    public String customerException() {
+        return "customer....";
     }
 
 
