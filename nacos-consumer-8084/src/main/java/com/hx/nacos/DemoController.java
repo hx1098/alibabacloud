@@ -32,7 +32,10 @@ public class DemoController {
 
 
     @GetMapping(value = "/consumer/fallback/{id}")
-    @SentinelResource(value = "fallback",fallback = "fallbackHandler",blockHandler = "blockHandler")
+    @SentinelResource(value = "fallback",
+            fallback = "fallbackHandler",
+            blockHandler = "blockHandler",
+            exceptionsToIgnore = {NullPointerException.class})//这里标注的异常将会被原样抛出
     public JsonResult<String> getServerPort(@PathVariable Long id) {
         log.info("serverUrl::" + serverUrl);
         if (id <= 3) {
