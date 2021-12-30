@@ -1,6 +1,7 @@
 package com.hx.nacos;
 
 import com.hx.nacos.commons.JsonResult;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import java.util.HashMap;
  * @editDescription
  */
 @RestController
+@Slf4j
 public class DemoController {
 
     @Value("${server.port}")
@@ -33,7 +35,7 @@ public class DemoController {
 
     @GetMapping("info/{id}")
     public JsonResult<String> mysql(@PathVariable("id") long id) {
-        JsonResult<String> result = new JsonResult(200,  hashMap.get(id));
+        JsonResult<String> result = new JsonResult(200,  hashMap.get(id)+"::"+serverPort);
         return result;
     }
 

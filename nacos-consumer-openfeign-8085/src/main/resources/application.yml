@@ -1,0 +1,21 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: nacos-consumer-openfeign
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    sentinel: #sentinel端口
+      transport:
+        dashboard: localhost:8080
+        port: 8719 #默认端口, 如果被占用, 就会+1开始扫描,
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+service-url:
+  nacos-user-service: http://nacos-provider

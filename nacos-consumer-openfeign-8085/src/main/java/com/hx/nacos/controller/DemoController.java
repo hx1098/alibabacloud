@@ -1,13 +1,16 @@
-package com.hx.nacos;
+package com.hx.nacos.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.hx.nacos.commons.JsonResult;
+import com.hx.nacos.feignapi.DemoFeignService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.HashMap;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * @author hx
@@ -22,23 +25,18 @@ import java.util.HashMap;
 @RestController
 public class DemoController {
 
-
-    @Value("${server.port}")
-    private String serverPort;
-
-    public static HashMap<Long, String> hashMap = new HashMap<>();
-
-    static {
-        hashMap.put(1L,"键盘");
-        hashMap.put(2L,"鼠标");
-        hashMap.put(3L,"储存器");
-    }
+    @Autowired
+    private DemoFeignService demoFeignService;
 
     @GetMapping("info/{id}")
     public JsonResult<String> mysql(@PathVariable("id") long id) {
-        JsonResult<String> result = new JsonResult(200,  hashMap.get(id) + "::" + serverPort);
-        return result;
+        JsonResult<String> mysql = demoFeignService.mysql(id);
+        return mysql;
     }
+
+
+
+
 
 
 
