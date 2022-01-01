@@ -1,6 +1,7 @@
 package com.hx.nacos;
 
 import com.hx.nacos.commons.JsonResult;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author hx
@@ -34,8 +36,14 @@ public class DemoController {
         hashMap.put(3L,"储存器");
     }
 
+
     @GetMapping("info/{id}")
     public JsonResult<String> mysql(@PathVariable("id") long id) {
+        try {
+            TimeUnit.MILLISECONDS.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         JsonResult<String> result = new JsonResult(200,  hashMap.get(id) + "::" + serverPort);
         return result;
     }
