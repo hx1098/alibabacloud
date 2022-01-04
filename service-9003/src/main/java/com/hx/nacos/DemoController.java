@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author hx
@@ -35,8 +36,23 @@ public class DemoController {
 
     @GetMapping("info/{id}")
     public JsonResult<String> mysql(@PathVariable("id") long id) {
+        try {
+            TimeUnit.MILLISECONDS.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         JsonResult<String> result = new JsonResult(200,  hashMap.get(id)+"::"+serverPort);
         return result;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(123);
+        try {
+            TimeUnit.MILLISECONDS.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(123);
     }
 
 
