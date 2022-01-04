@@ -13,10 +13,14 @@ spring:
         port: 8719 #默认端口, 如果被占用, 就会+1开始扫描,
 
 
+#超时时间控制
 ribbon:
   ReadTimeout: 5000
   ConnectTimeout: 5000
 
+logging:
+  level:
+    com.hx.nacos.feignapi.DemoFeignService: debug
 
 management:
   endpoints:
