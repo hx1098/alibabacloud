@@ -18,6 +18,13 @@ ribbon:
   ReadTimeout: 5000
   ConnectTimeout: 5000
 
+#激活sentinel对Openfeign的支持
+feign:
+  sentinel:
+    enabled: true
+  hystrix:
+    enabled: true
+
 logging:
   level:
     com.hx.nacos.feignapi.DemoFeignService: debug

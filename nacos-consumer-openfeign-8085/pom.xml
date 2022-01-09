@@ -44,6 +44,8 @@
             <version>2.2.5.RELEASE</version>
         </dependency>
 
+
+
         <dependency>
             <groupId>com.hx</groupId>
             <artifactId>alibaba-commons</artifactId>

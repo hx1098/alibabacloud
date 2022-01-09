@@ -1,6 +1,7 @@
 package com.hx.nacos.feignapi;
 
 import com.hx.nacos.commons.JsonResult;
+import com.hx.nacos.feignapi.Impl.FeignServiceImpl;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  */
 
 @Service
-@FeignClient(value = "nacos-provider")
+@FeignClient(value = "nacos-provider",fallback = FeignServiceImpl.class)
 public interface DemoFeignService {
 
     @GetMapping("info/{id}")

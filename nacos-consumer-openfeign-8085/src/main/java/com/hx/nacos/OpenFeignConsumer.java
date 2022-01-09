@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients //添加feign的注解
+@EnableFeignClients // 添加feign的注解
 public class OpenFeignConsumer {
 
     public static void main(String[] args) {
