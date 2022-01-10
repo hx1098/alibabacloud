@@ -17,13 +17,14 @@
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud-alibaba-version>2.2.5.RELEASE</spring-cloud-alibaba-version>
+        <spring-cloud-gateway-varsion>Hoxton.SR5</spring-cloud-gateway-varsion>
         <openfeigin-version>2.2.5.RELEASE</openfeigin-version>
     </properties>
     <dependencies>
-        <dependency>
+       <!-- <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
@@ -58,6 +59,13 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud-gateway-varsion}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -73,6 +81,7 @@
         <module>nacos-consumer-8083</module>
         <module>service-9003</module>
         <module>service-9004</module>
+        <module>gateway-9999</module>
     </modules>
 
 </project>
