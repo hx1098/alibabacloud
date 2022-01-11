@@ -2,6 +2,7 @@ package com.hx.nacos.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -14,13 +15,21 @@ import org.springframework.web.bind.annotation.RestController;
  * @editDescription
  */
 @RestController
+@RequestMapping("/hx")
 public class DemoController {
 
     @Value("${server.port}")
     private String serverPort;
 
-    @GetMapping(value = "test")
+    @GetMapping(value = "/test")
     public String  getServerPort() {
+        System.out.println("请求过来了。。。。");
         return "hello nacos discovery" + serverPort;
+    }
+
+    @GetMapping(value = "/custom")
+    public String  getCustom() {
+        System.out.println("请求过来了。。。。custom");
+        return "hello nacos custom" + serverPort;
     }
 }

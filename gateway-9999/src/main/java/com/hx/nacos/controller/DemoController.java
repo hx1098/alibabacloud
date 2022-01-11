@@ -1,4 +1,4 @@
-package com.hx.nacos;
+package com.hx.nacos.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,8 +21,10 @@ public class DemoController {
 
     @GetMapping("/get")
     public String getString() {
-        return "gateWay" + serverPort;
+        return "gateWay:" + serverPort;
     }
+
+
 
 
 }
