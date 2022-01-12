@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
  *   http://127.0.0.1:9999/hx/custom
  *   http://127.0.0.1:9001/hx/custom
  */
-@Configuration
+//@Configuration
 public class GateWayConfig {
 
 

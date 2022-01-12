@@ -23,13 +23,13 @@ public class DemoController {
 
     @GetMapping(value = "/test")
     public String  getServerPort() {
-        System.out.println("请求过来了。。。。");
+        System.out.println("请求过来了。。。。 9001");
         return "hello nacos discovery" + serverPort;
     }
 
     @GetMapping(value = "/custom")
     public String  getCustom() {
-        System.out.println("请求过来了。。。。custom");
+        System.out.println("请求过来了。。。。9001 custom");
         return "hello nacos custom" + serverPort;
     }
 }
