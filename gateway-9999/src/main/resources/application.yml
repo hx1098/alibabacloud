@@ -17,3 +17,6 @@ spring:
          uri: lb://nacos-provider
          predicates: #断言
            - Path=/hx/** #路径相匹配进行路由
+           - After=2022-01-12T17:24:10.529+08:00[Asia/Shanghai]  在这个时间点会后可以访问
+
+           #https://docs.spring.io/spring-cloud-gateway/docs/current/reference/html/#the-before-route-predicate-factory 这里的gateway的英文说明书,

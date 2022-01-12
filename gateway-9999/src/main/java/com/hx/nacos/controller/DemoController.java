@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.ZonedDateTime;
+
 /**
  *
  * @author hx
@@ -22,6 +24,11 @@ public class DemoController {
     @GetMapping("/get")
     public String getString() {
         return "gateWay:" + serverPort;
+    }
+
+    public static void main(String[] args) {
+        ZonedDateTime da = ZonedDateTime.now();
+        System.out.println(da);
     }
 
 
