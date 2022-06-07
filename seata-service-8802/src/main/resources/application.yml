@@ -1,0 +1,28 @@
+server:
+  port: 8802
+spring:
+  application:
+    name: seata-stock
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test-at?characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+
+seata:
+  tx-service-group: mygroup
+  service:
+    vgroup-mapping:
+      mygroup: default
+
+#Load balancer does not have available server for client, 会报这个错误
+feign:
+  hystrix:
+    enabled: true
+
+
